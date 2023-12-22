@@ -11,6 +11,7 @@ export interface IFilm {
   runtime?: number;
   videos?: IVideo[];
   images?: TFilmImgs;
+  similar?: IFilm[];
 }
 
 export type TFilmImg = {

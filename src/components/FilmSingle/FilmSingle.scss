@@ -3,6 +3,7 @@ div.film-single {
   background: center / cover no-repeat;
   position: relative;
   z-index: 1;
+
   &::before {
     content: '';
     width: 100%;
@@ -43,4 +44,14 @@ div.film-single {
       }
     }
   }
+
+  section {
+    &:not(:last-of-type) {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.film-single__hero {
+  padding-top: 30px;
 }

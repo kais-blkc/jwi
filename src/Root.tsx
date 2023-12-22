@@ -1,12 +1,12 @@
-import '@/main.scss';
 import { FC, useEffect } from 'react';
 import { getGenreList } from './redux/thunks/filmsThunks';
 import { useAppDispatch } from './hooks';
-import { RouterProvider } from 'react-router-dom';
-import { router } from './router/router';
+import Header from './components/Header/Header';
 // Font awesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { Outlet } from 'react-router-dom';
+import ScrollToTop from './components/global/ScrollToTop';
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +17,15 @@ const App: FC = () => {
     dispatch(getGenreList());
   }, []);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <ScrollToTop />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+    </>
+  );
 };
 
 export default App;

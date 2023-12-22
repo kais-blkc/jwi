@@ -7,6 +7,7 @@ import {
   getPopularFilms,
   getVideosById,
   getImagesById,
+  getSimilarFilmsById,
 } from './thunks/filmsThunks';
 
 const initialState: IInitialState = {
@@ -108,6 +109,17 @@ const filmsSlice = createSlice({
         thunkPendingHandler('getImagesById');
       })
       .addCase(getImagesById.rejected, (_, action) => {
+        thunkErrorHandler(action.error.message);
+      });
+
+    builder
+      .addCase(getSimilarFilmsById.fulfilled, (state, action) => {
+        state.curFilm.similar = action.payload.results;
+      })
+      .addCase(getSimilarFilmsById.pending, () => {
+        thunkPendingHandler('getSimilarFilmsById');
+      })
+      .addCase(getSimilarFilmsById.rejected, (_, action) => {
         thunkErrorHandler(action.error.message);
       });
   },

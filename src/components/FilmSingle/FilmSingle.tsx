@@ -9,6 +9,8 @@ import CurGenresSingle from '../global/CurGenresSingle';
 import Fancybox from '../global/Fancybox';
 import Trailers from '../global/Trailers';
 import FilmSingleImgs from './FilmSingleImgs';
+import FilmSingleSimilar from './FilmSingleSimilar';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 type FilmSinglePageParams = {
   id: string;
@@ -24,7 +26,8 @@ const FilmSinglePage: FC = () => {
   useEffect(() => {
     dispatch(getFilmById(params.id || ''));
     dispatch(getVideosById(Number(params.id)));
-  }, []);
+    console.log(curFilm.id);
+  }, [params.id]);
 
   return (
     <div
@@ -33,7 +36,7 @@ const FilmSinglePage: FC = () => {
         backgroundImage: `url(${bgImg})`,
       }}
     >
-      <section className="film-single__hero">
+      <section className="film-single__hero not-py">
         <div className="container">
           <div
             key={curFilm.id}
@@ -80,17 +83,36 @@ const FilmSinglePage: FC = () => {
 
       <section className="film-single__imgs slider-full-w">
         <div className="container">
-          <h3 className="h3">Фоны</h3>
-          <FilmSingleImgs
-            filmId={curFilm.id}
-            imgsType="backdrops"
-          />
+          <Tabs
+            defaultIndex={0}
+            className="film-tabs"
+          >
+            <TabList>
+              <Tab className="h3 btn btn-round">Фоны</Tab>
+              <Tab className="h3 btn btn-round">Постеры</Tab>
+            </TabList>
 
-          <h3 className="h3">Постеры</h3>
-          <FilmSingleImgs
-            filmId={curFilm.id}
-            imgsType="posters"
-          />
+            <TabPanel>
+              <FilmSingleImgs
+                filmId={curFilm.id}
+                imgsType="backdrops"
+              />
+            </TabPanel>
+
+            <TabPanel>
+              <FilmSingleImgs
+                filmId={curFilm.id}
+                imgsType="posters"
+              />
+            </TabPanel>
+          </Tabs>
+        </div>
+      </section>
+
+      <section className="film-single__imgs slider-full-w">
+        <div className="container">
+          <h3 className="h3">Похожие фильмы</h3>
+          <FilmSingleSimilar filmId={curFilm.id} />
         </div>
       </section>
     </div>

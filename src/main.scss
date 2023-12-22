@@ -40,6 +40,8 @@ html {
     var(--slate-800),
     var(--slate-900)
   );
+
+  scroll-behavior: smooth;
 }
 
 body {
@@ -167,5 +169,26 @@ a {
 
   .swiper {
     overflow: visible;
+  }
+}
+
+.film-tabs {
+  .react-tabs__tab-list {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+  }
+
+  .react-tabs__tab--selected {
+    opacity: 0.5;
+  }
+}
+
+main {
+  margin-left: 50px;
+
+  @media (max-width: 1000px) {
+    margin-left: 0;
+    margin-bottom: 50px;
   }
 }

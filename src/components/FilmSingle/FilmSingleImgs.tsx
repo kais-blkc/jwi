@@ -46,17 +46,18 @@ const FilmSingleImgs: FC<IFilmSingleImgsProps> = ({ filmId, imgsType }) => {
     <Fancybox>
       <Swiper
         className="backdrops film-single__img-slider"
-        spaceBetween={25}
         modules={[Navigation]}
         navigation={true}
         breakpoints={{
           320: {
             slidesPerView: 3,
             slidesPerGroup: 3,
+            spaceBetween: 10,
           },
           1000: {
             slidesPerView: 4,
             slidesPerGroup: 4,
+            spaceBetween: 25,
           },
         }}
       >

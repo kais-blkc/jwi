@@ -84,6 +84,20 @@ export const getImagesById = createAsyncThunk(
   }
 );
 
+export const getSimilarFilmsById = createAsyncThunk(
+  'films/getSimilarFilmsById',
+  async (filmId: number) => {
+    const response = await fetch(
+      getQueryStr(`movie/${filmId}/similar`),
+      fetchParams
+    );
+    catchFetchError(response);
+
+    const videos = await response.json();
+    return videos;
+  }
+);
+
 function catchFetchError(response: IResponse) {
   if (!response.ok) {
     throw new Error(
