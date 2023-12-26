@@ -8,6 +8,7 @@ import {
   getVideosById,
   getImagesById,
   getSimilarFilmsById,
+  getCastFilmsById,
 } from './thunks/filmsThunks';
 
 const initialState: IInitialState = {
@@ -24,6 +25,7 @@ const initialState: IInitialState = {
 
   allGenres: {},
   genresReady: false,
+  loading: false,
 };
 
 const filmsSlice = createSlice({
@@ -33,6 +35,12 @@ const filmsSlice = createSlice({
     setCurFilm(state, film: PayloadAction<IFilm>) {
       state.curFilm = film.payload;
     },
+    loadingOn(state) {
+      state.loading = true;
+    },
+    loadingOff(state) {
+      state.loading = false;
+    },
   },
   extraReducers: (builder) => {
     // getNowPlayingFilms
@@ -40,7 +48,7 @@ const filmsSlice = createSlice({
       .addCase(getNowPlayingFilms.fulfilled, (state, action) => {
         state.films.nowPlaying = action.payload.results;
       })
-      .addCase(getNowPlayingFilms.pending, () => {
+      .addCase(getNowPlayingFilms.pending, (state) => {
         thunkPendingHandler('nowPlaying');
       })
       .addCase(getNowPlayingFilms.rejected, (_, action) => {
@@ -80,9 +88,11 @@ const filmsSlice = createSlice({
     builder
       .addCase(getFilmById.fulfilled, (state, action) => {
         state.curFilm = action.payload;
+        state.loading = false;
       })
-      .addCase(getFilmById.pending, () => {
+      .addCase(getFilmById.pending, (state) => {
         thunkPendingHandler('film by id');
+        state.loading = true;
       })
       .addCase(getFilmById.rejected, (_, action) => {
         thunkErrorHandler(action.error.message);
@@ -120,6 +130,17 @@ const filmsSlice = createSlice({
         thunkPendingHandler('getSimilarFilmsById');
       })
       .addCase(getSimilarFilmsById.rejected, (_, action) => {
+        thunkErrorHandler(action.error.message);
+      });
+
+    builder
+      .addCase(getCastFilmsById.fulfilled, (state, action) => {
+        state.curFilm.cast = action.payload.cast;
+      })
+      .addCase(getCastFilmsById.pending, () => {
+        thunkPendingHandler('getCastFilmsById');
+      })
+      .addCase(getCastFilmsById.rejected, (_, action) => {
         thunkErrorHandler(action.error.message);
       });
   },

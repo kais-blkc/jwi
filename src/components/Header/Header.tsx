@@ -6,15 +6,16 @@ import { Link } from 'react-router-dom';
 const Header: FC = () => {
   return (
     <header>
-      <div className="container">
-        <ul className="navbar">
-          <li>
-            <Link to={'/'}>
-              <FontAwesomeIcon icon={['fas', 'home']}></FontAwesomeIcon>
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <ul className="navbar">
+        <li>
+          <Link
+            to={'/'}
+            className="hover-opacity"
+          >
+            <FontAwesomeIcon icon={['fas', 'home']}></FontAwesomeIcon>
+          </Link>
+        </li>
+      </ul>
     </header>
   );
 };

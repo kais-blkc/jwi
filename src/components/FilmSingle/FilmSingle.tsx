@@ -11,6 +11,8 @@ import Trailers from '../global/Trailers';
 import FilmSingleImgs from './FilmSingleImgs';
 import FilmSingleSimilar from './FilmSingleSimilar';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import FilmSingleCast from './FilmSingleCast';
+import { animated, useSpring } from '@react-spring/web';
 
 type FilmSinglePageParams = {
   id: string;
@@ -20,14 +22,19 @@ const FilmSinglePage: FC = () => {
   const dispatch = useAppDispatch();
   const { curFilm } = useAppSelector((state) => state.films);
   const params = useParams<FilmSinglePageParams>();
-  const img = getImgPath(curFilm.poster_path, '500');
   const bgImg = getImgPath(curFilm.backdrop_path, '1280');
+
+  const poster = getImgPath(curFilm.poster_path, '780');
+  const bg = getImgPath(curFilm.backdrop_path, '780');
+  const img = window.innerWidth > 767 ? poster : bg;
 
   useEffect(() => {
     dispatch(getFilmById(params.id || ''));
     dispatch(getVideosById(Number(params.id)));
     console.log(curFilm.id);
   }, [params.id]);
+
+  if (curFilm.id === 0) return;
 
   return (
     <div
@@ -106,6 +113,13 @@ const FilmSinglePage: FC = () => {
               />
             </TabPanel>
           </Tabs>
+        </div>
+      </section>
+
+      <section className="film-single__cast slider-full-w">
+        <div className="container">
+          <h3 className="h3">Актерский состав</h3>
+          <FilmSingleCast filmId={curFilm.id} />
         </div>
       </section>
 

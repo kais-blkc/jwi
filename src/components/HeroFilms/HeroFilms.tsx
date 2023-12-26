@@ -47,7 +47,7 @@ const HeroFilms: FC = () => {
   });
 
   return (
-    <section className="films-hero not-py">
+    <section className="films-hero not-py not-px">
       <div className="films-hero-wrapper">
         <div className="films-hero__bgs">{HeroFilmsBgItemList}</div>
 

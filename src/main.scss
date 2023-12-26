@@ -105,6 +105,10 @@ section {
     padding-top: 0;
     padding-bottom: 0;
   }
+  &.not-px {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 a {
@@ -169,6 +173,7 @@ a {
 
   .swiper {
     overflow: visible;
+    padding: 12px 0;
   }
 }
 
@@ -184,11 +189,17 @@ a {
   }
 }
 
-main {
-  margin-left: 50px;
+section {
+  padding-left: 30px;
 
   @media (max-width: 1000px) {
-    margin-left: 0;
-    margin-bottom: 50px;
+    padding-left: 0;
+    padding-bottom: 50px;
+  }
+}
+.hover-opacity {
+  transition: all 0.2s ease;
+  &:hover {
+    opacity: 0.6;
   }
 }

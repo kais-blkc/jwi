@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { Outlet } from 'react-router-dom';
 import ScrollToTop from './components/global/ScrollToTop';
+import Loading from './components/Loading/Loading';
 
 const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ const App: FC = () => {
 
   return (
     <>
+      <Loading />
       <ScrollToTop />
       <Header />
       <main>

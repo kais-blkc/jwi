@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IFilm } from '@/types';
 
@@ -11,6 +11,8 @@ interface ITrailersProps {
 
 const Trailers: FC<ITrailersProps> = ({ film }) => {
   let videos;
+
+  useEffect(() => {}, [film.id]);
 
   if (film.videos) {
     videos = film.videos.map((item, index) => {

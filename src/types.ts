@@ -12,10 +12,19 @@ export interface IFilm {
   videos?: IVideo[];
   images?: TFilmImgs;
   similar?: IFilm[];
+  cast?: TFilmSingleCast[];
 }
 
 export type TFilmImg = {
   file_path: string;
+};
+
+export type TFilmSingleCast = {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string;
+  known_for_department: string;
 };
 
 export type TFilmImgs = {
@@ -49,6 +58,7 @@ export interface IInitialState {
   curFilm: IFilm;
   allGenres: TAllGenres | {};
   genresReady: boolean;
+  loading: boolean;
 }
 
 export type IImgSizes = '500' | '780' | '1280';

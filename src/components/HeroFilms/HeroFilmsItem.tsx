@@ -3,6 +3,7 @@ import { getImgPath } from '../../api';
 import { IFilm } from '../../types';
 import VoteAverage from '../global/VoteAverage';
 import CurGenres from '../global/CurGenres';
+import { Link } from 'react-router-dom';
 
 interface IHeroFilmsItemProps {
   film: IFilm;
@@ -10,10 +11,13 @@ interface IHeroFilmsItemProps {
 }
 
 const HeroFilmsItem: FC<IHeroFilmsItemProps> = ({ film }) => {
-  const img = getImgPath(film.poster_path, '780');
+  const poster = getImgPath(film.poster_path, '780');
+  const bg = getImgPath(film.backdrop_path, '780');
+  const img = window.innerWidth > 767 ? poster : bg;
 
   return (
-    <div
+    <Link
+      to={'/movies/' + film.id}
       key={film.id}
       data-id={film.id}
       className="films-hero__item"
@@ -42,7 +46,7 @@ const HeroFilmsItem: FC<IHeroFilmsItemProps> = ({ film }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
