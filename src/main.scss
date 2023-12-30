@@ -95,10 +95,11 @@ img {
 }
 
 section {
-  padding: 60px 0;
-
-  @media (max-width: 767px) {
-    padding: 30px 0;
+  &.sec-p {
+    padding: 60px 0;
+    @media (max-width: 767px) {
+      padding: 30px 0;
+    }
   }
 
   &.not-py {
@@ -202,4 +203,8 @@ section {
   &:hover {
     opacity: 0.6;
   }
+}
+
+.error {
+  color: var(--red-500);
 }

@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { getImgPath } from '../../api';
-import { IFilm } from '../../types';
-import VoteAverage from '../global/VoteAverage';
-import CurGenres from '../global/CurGenres';
+import { getImgPath } from '@/api';
+import { IFilm } from '@/models/IFilm';
+import VoteAverage from '@/components/global/VoteAverage';
+import CurGenres from '@/components/global/CurGenres';
 import { Link } from 'react-router-dom';
 
 interface IHeroFilmsItemProps {
@@ -16,19 +16,21 @@ const HeroFilmsItem: FC<IHeroFilmsItemProps> = ({ film }) => {
   const img = window.innerWidth > 767 ? poster : bg;
 
   return (
-    <Link
-      to={'/movies/' + film.id}
+    <div
       key={film.id}
       data-id={film.id}
       className="films-hero__item"
     >
-      <div className="films-hero__item-img">
+      <Link
+        className="films-hero__item-img hover-opacity"
+        to={'/movies/' + film.id}
+      >
         <img
           className="img-cover"
           src={img}
           alt=""
         />
-      </div>
+      </Link>
       <div className="films-hero__item-info">
         <div>
           <div className="films-hero__item-title">{film.title}</div>
@@ -46,7 +48,7 @@ const HeroFilmsItem: FC<IHeroFilmsItemProps> = ({ film }) => {
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

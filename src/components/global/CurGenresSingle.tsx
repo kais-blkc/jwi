@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IFilm } from '@/types';
+import { IFilm } from '@/models/IFilm';
 
 interface ICurGenresProps {
   film: IFilm;

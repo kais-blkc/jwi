@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IFilm, IInitialState } from '@/types';
+import { IFilm } from '@/models/IFilm';
+import { IAllGenres } from '@/types';
 import {
   getFilmById,
   getGenreList,
@@ -11,10 +12,23 @@ import {
   getCastFilmsById,
 } from './thunks/filmsThunks';
 
+export interface IInitialState {
+  films: {
+    nowPlaying: IFilm[];
+    popular: IFilm[];
+    cartoons: IFilm[];
+  };
+  curFilm: IFilm;
+  allGenres: IAllGenres | {};
+  genresReady: boolean;
+  loading: boolean;
+}
+
 const initialState: IInitialState = {
   films: {
     popular: [],
     nowPlaying: [],
+    cartoons: [],
   },
   curFilm: {
     id: 0,
@@ -48,7 +62,7 @@ const filmsSlice = createSlice({
       .addCase(getNowPlayingFilms.fulfilled, (state, action) => {
         state.films.nowPlaying = action.payload.results;
       })
-      .addCase(getNowPlayingFilms.pending, (state) => {
+      .addCase(getNowPlayingFilms.pending, () => {
         thunkPendingHandler('nowPlaying');
       })
       .addCase(getNowPlayingFilms.rejected, (_, action) => {

@@ -1,12 +1,16 @@
 import { FC } from 'react';
-import HeroFilms from '@components/HeroFilms/HeroFilms';
-import FilmsRow from '@components/FilmsRow/FilmsRow';
+import HeroFilms from '@/components/Films/HeroFilms/HeroFilms';
+import FilmsPopular from '@/components/Films/FIlmsLists/FilmsPopular';
+import FilmsCartoon from '@/components/Films/FIlmsLists/FilmsCartoon';
+import TvPopular from '@/components/Films/FIlmsLists/TvPopular';
 
 const MainPage: FC = () => {
   return (
     <div>
       <HeroFilms />
-      <FilmsRow />
+      <FilmsPopular />
+      <FilmsCartoon />
+      <TvPopular />
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { getImgPath } from '@/api';
 import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import Fancybox from '../global/Fancybox';
+import Fancybox from '@/components/global/Fancybox';
 
 type TImgTypes = 'backdrops' | 'logos' | 'posters';
 

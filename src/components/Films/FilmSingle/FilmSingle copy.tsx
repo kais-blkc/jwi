@@ -4,15 +4,14 @@ import { getFilmById, getVideosById } from '@/redux/thunks/filmsThunks';
 import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { getImgPath } from '@/api';
-import VoteAverage from '../global/VoteAverage';
-import CurGenresSingle from '../global/CurGenresSingle';
-import Fancybox from '../global/Fancybox';
-import Trailers from '../global/Trailers';
+import VoteAverage from '@/components/global/VoteAverage';
+import CurGenresSingle from '@/components/global/CurGenresSingle';
+import Fancybox from '@/components/global/Fancybox';
+import Trailers from '@/components/global/Trailers';
 import FilmSingleImgs from './FilmSingleImgs';
 import FilmSingleSimilar from './FilmSingleSimilar';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import FilmSingleCast from './FilmSingleCast';
-import { animated, useSpring } from '@react-spring/web';
 
 type FilmSinglePageParams = {
   id: string;
@@ -20,13 +19,12 @@ type FilmSinglePageParams = {
 
 const FilmSinglePage: FC = () => {
   const dispatch = useAppDispatch();
-  const { curFilm } = useAppSelector((state) => state.films);
   const params = useParams<FilmSinglePageParams>();
-  const bgImg = getImgPath(curFilm.backdrop_path, '1280');
+  const { curFilm } = useAppSelector((state) => state.films);
 
+  const bgImg = getImgPath(curFilm.backdrop_path, '1280');
   const poster = getImgPath(curFilm.poster_path, '780');
-  const bg = getImgPath(curFilm.backdrop_path, '780');
-  const img = window.innerWidth > 767 ? poster : bg;
+  const img = window.innerWidth > 767 ? poster : bgImg;
 
   useEffect(() => {
     dispatch(getFilmById(params.id || ''));

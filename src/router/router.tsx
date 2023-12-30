@@ -1,4 +1,4 @@
-import FilmSingle from '@/components/FilmSingle/FilmSingle';
+import FilmSingle from '@/components/Films/FilmSingle/FilmSingle';
 import ErrorPage from '@/components/pages/ErrorPage';
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Root from '@/Root';

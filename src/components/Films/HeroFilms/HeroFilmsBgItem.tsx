@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { IFilm } from '../../types';
-import { getImgPath } from '../../api';
+import { IFilm } from '@/models/IFilm';
+import { getImgPath } from '@/api';
 
 interface IHeroFilmsBgItemProps {
   film: IFilm;

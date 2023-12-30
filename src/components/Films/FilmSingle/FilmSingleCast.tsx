@@ -1,23 +1,16 @@
 import { getImgPath } from '@/api';
-import { useAppDispatch, useAppSelector } from '@/hooks';
-import { getCastFilmsById } from '@/redux/thunks/filmsThunks';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { filmsApi } from '@/services/FilmsService';
+import Error from '@/components/global/Error';
 
 interface IFilmSingleCastProps {
   filmId: number;
 }
 
 const FilmSingleCast: FC<IFilmSingleCastProps> = ({ filmId }) => {
-  const dispatch = useAppDispatch();
-  const cast = useAppSelector((state) => state.films.curFilm.cast);
-
-  useEffect(() => {
-    dispatch(getCastFilmsById(filmId));
-  }, [filmId]);
-
-  console.log(cast);
+  const { data: cast, isError } = filmsApi.useGetCastFilmsByIdQuery(filmId);
 
   const castList = cast?.map((item, index) => {
     const img = getImgPath(item.profile_path);
@@ -44,33 +37,37 @@ const FilmSingleCast: FC<IFilmSingleCastProps> = ({ filmId }) => {
   });
 
   return (
-    <div className="cast-list">
-      <Swiper
-        className="films-row"
-        slidesPerGroup={4}
-        spaceBetween={25}
-        modules={[Navigation]}
-        navigation={true}
-        breakpoints={{
-          320: {
-            slidesPerView: 'auto',
-            slidesPerGroup: 1,
-          },
-          768: {
-            slidesPerView: 4,
-            slidesPerGroup: 4,
-          },
-          1000: {
-            slidesPerView: 5,
-          },
-          1200: {
-            slidesPerView: 6,
-          },
-        }}
-      >
-        {castList}
-      </Swiper>
-    </div>
+    <>
+      {isError && <Error />}
+
+      <div className="cast-list">
+        <Swiper
+          className="films-row"
+          slidesPerGroup={4}
+          spaceBetween={25}
+          modules={[Navigation]}
+          navigation={true}
+          breakpoints={{
+            320: {
+              slidesPerView: 'auto',
+              slidesPerGroup: 1,
+            },
+            768: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+            },
+            1000: {
+              slidesPerView: 5,
+            },
+            1200: {
+              slidesPerView: 6,
+            },
+          }}
+        >
+          {castList}
+        </Swiper>
+      </div>
+    </>
   );
 };
 

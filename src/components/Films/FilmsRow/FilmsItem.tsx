@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { getImgPath } from '@/api';
-import { IFilm } from '@/types';
+import { IFilm } from '@/models/IFilm';
 import { Link } from 'react-router-dom';
-import VoteAverage from '../global/VoteAverage';
-import CurGenres from '../global/CurGenres';
+import VoteAverage from '@/components/global/VoteAverage';
+import CurGenres from '@/components/global/CurGenres';
 
 interface IFilmsItemProps {
   film: IFilm;

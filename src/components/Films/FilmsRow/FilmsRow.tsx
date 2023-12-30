@@ -4,21 +4,19 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 
-import { FC, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '@/hooks';
+import { FC } from 'react';
 
-import { getPopularFilms } from '@/redux/thunks/filmsThunks';
 import FilmsItem from './FilmsItem';
+import { IFilm } from '@/models/IFilm';
 
-const FilmsRow: FC = () => {
-  const dispatch = useAppDispatch();
-  const popularFilms = useAppSelector((state) => state.films.films.popular);
+interface IFilmsRowProps {
+  films: IFilm[];
+  getMethod?: Function;
+  title?: string;
+}
 
-  useEffect(() => {
-    dispatch(getPopularFilms());
-  }, []);
-
-  const filmsRowList = popularFilms.map((film, index) => {
+const FilmsRow: FC<IFilmsRowProps> = ({ films, title = '' }) => {
+  const filmsRowList = films.map((film, index) => {
     return (
       <SwiperSlide key={index}>
         <FilmsItem
@@ -32,7 +30,7 @@ const FilmsRow: FC = () => {
   return (
     <section className="films-row">
       <div className="container">
-        <h2>Популярные фильмы</h2>
+        <h2>{title}</h2>
 
         <Swiper
           className="films-row__list"

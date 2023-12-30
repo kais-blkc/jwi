@@ -1,4 +1,4 @@
-import { MOVE_LIST, fetchParams, getQueryStr } from '@/api';
+import { REQ_LIST, fetchParams, getQueryStr } from '@/api';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 interface IResponse {
@@ -8,17 +8,14 @@ interface IResponse {
 }
 
 export const getFilmsCats = createAsyncThunk('films/getFilmsCats', async () => {
-  const response = await fetch(getQueryStr(MOVE_LIST.genreList), fetchParams);
+  const response = await fetch(getQueryStr(REQ_LIST.genreList), fetchParams);
   catchFetchError(response, 'getFilmsCats');
 });
 
 export const getNowPlayingFilms = createAsyncThunk(
   'films/getNowPlayingFilms',
   async () => {
-    const response = await fetch(
-      getQueryStr(MOVE_LIST.nowPlaying),
-      fetchParams
-    );
+    const response = await fetch(getQueryStr(REQ_LIST.nowPlaying), fetchParams);
     catchFetchError(response, 'getNowPlayingFilms');
 
     const films = await response.json();
@@ -29,7 +26,7 @@ export const getNowPlayingFilms = createAsyncThunk(
 export const getPopularFilms = createAsyncThunk(
   'films/getPopularFilms',
   async () => {
-    const response = await fetch(getQueryStr(MOVE_LIST.popular), fetchParams);
+    const response = await fetch(getQueryStr(REQ_LIST.popular), fetchParams);
     catchFetchError(response, 'getPopularFilms');
 
     const films = await response.json();
@@ -53,6 +50,7 @@ export const getGenreList = createAsyncThunk('films/getGenreList', async () => {
   catchFetchError(response, 'getGenreList');
 
   const genres = await response.json();
+  // console.log(genres);
   return genres;
 });
 
@@ -111,6 +109,14 @@ export const getCastFilmsById = createAsyncThunk(
     return result;
   }
 );
+
+// export const getCartoons = createAsyncThunk('films/getCartoons', async () => {
+//   const response = await fetch(getQueryStr(REQ_LIST.cartoons), fetchParams);
+//   catchFetchError(response, 'getCartoons');
+
+//   const result = await response.json();
+//   return result;
+// });
 
 function catchFetchError(response: IResponse, thunkName: string) {
   if (!response.ok) {

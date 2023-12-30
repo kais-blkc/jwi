@@ -9,7 +9,7 @@ const Loading: FC = () => {
   const randomImg = allImgs[Math.floor(Math.random() * allImgs.length)];
 
   return (
-    <div className={'loading-page ' + activeClasses}>
+    <div className={'loading-page active'}>
       <img
         src={randomImg}
         alt=""

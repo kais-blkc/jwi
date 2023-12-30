@@ -20,7 +20,7 @@ const App: FC = () => {
 
   return (
     <>
-      <Loading />
+      {/* <Loading /> */}
       <ScrollToTop />
       <Header />
       <main>

@@ -1,6 +1,6 @@
-import { FC, useCallback, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IFilm } from '@/types';
+import { IFilm } from '@/models/IFilm';
 
 interface ITrailersProps {
   film: IFilm;
