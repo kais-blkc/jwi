@@ -1,0 +1,1 @@
+export { HeroBg } from './ui';

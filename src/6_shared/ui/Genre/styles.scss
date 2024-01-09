@@ -1,0 +1,29 @@
+.genre-item {
+  font-size: 16px;
+  padding: 3px 6px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.film-item__genre {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .film-item__genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    span {
+      padding: 3px 6px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}

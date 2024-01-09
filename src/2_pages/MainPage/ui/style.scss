@@ -1,0 +1,9 @@
+.page-main {
+  .films-row-wrapper {
+    padding-top: 35px;
+
+    &:last-child {
+      margin-bottom: 50px;
+    }
+  }
+}
