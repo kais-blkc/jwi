@@ -1,7 +1,5 @@
 import { IFilm } from '@/6_shared/model';
-import { REQ_LIST } from '@/6_shared/config';
 import { rtkApi } from '@/6_shared/api';
-import { IFilmImgList } from '@/6_shared/model';
 
 const queryParams = {
   language: 'ru',

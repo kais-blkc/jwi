@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { getImgPath } from '@/6_shared/api';
 
 interface IFilmsItemProps {
   id: number;

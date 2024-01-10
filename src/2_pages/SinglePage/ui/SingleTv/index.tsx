@@ -1,6 +1,6 @@
 import '../styles.scss';
 import { FC } from 'react';
-import { IApiParams, getImgPath, rtkApi } from '@/6_shared/api';
+import { IApiParams, getImgPath } from '@/6_shared/api';
 import { useParams } from 'react-router-dom';
 import { Loading } from '@/6_shared/ui/Loading';
 import { FilmHero } from '@/3_widgets/FilmDetail';

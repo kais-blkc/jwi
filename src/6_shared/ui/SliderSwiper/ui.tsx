@@ -32,7 +32,7 @@ export const SliderSwiper: FC<ISliderSwiperProps> = ({
       navigation={true}
       breakpoints={{
         320: {
-          slidesPerView: 'auto',
+          slidesPerView: 3,
         },
         768: {
           slidesPerView: 4,

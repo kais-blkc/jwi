@@ -1,5 +1,5 @@
-export * from './ui/FilmRow/ui';
-export * from './ui/FilmHero/ui';
+export * from './ui/FilmRow';
+export * from './ui/FilmHero';
 export * from './ui/FilmCast';
 export * from './ui/FilmSimilar';
 export * from './ui/FilmImgs';

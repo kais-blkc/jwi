@@ -44,13 +44,13 @@ export const FilmsRow: FC<IFilmsRowProps> = ({ list, title, movieType }) => {
   });
 
   return (
-    <FadeIn>
-      <section className="films-row-wrapper slider-full-w">
+    <section className="films-row-wrapper slider-full-w">
+      <FadeIn>
         <div className="container">
           <h2>{title}</h2>
           <SliderSwiper>{filmsRowList}</SliderSwiper>
         </div>
-      </section>
-    </FadeIn>
+      </FadeIn>
+    </section>
   );
 };

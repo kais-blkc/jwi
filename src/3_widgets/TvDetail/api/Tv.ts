@@ -1,4 +1,4 @@
-import { ICast, ITv } from '@/6_shared/model';
+import { ITv } from '@/6_shared/model';
 import { rtkApi } from '@/6_shared/api';
 import { ETvListTypes } from '../model';
 
@@ -10,9 +10,9 @@ interface IResponseTv {
   page: number;
   results: ITv[];
 }
-interface IResponseCast {
-  cast: ICast[];
-}
+// interface IResponseCast {
+//   cast: ICast[];
+// }
 
 export const tvApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({

@@ -28,6 +28,7 @@ div.film-single {
   .film-single__img-slider {
     .swiper-slide {
       width: auto;
+      max-width: 100%;
     }
 
     img {
