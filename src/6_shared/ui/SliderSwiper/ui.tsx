@@ -1,7 +1,10 @@
 import './styles.scss';
+import 'swiper/css';
+import 'swiper/css/grid';
+
 import { FC, ReactNode, useEffect, useRef } from 'react';
 import { Swiper, SwiperRef } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Grid } from 'swiper/modules';
 
 interface ISliderSwiperProps {
   children: ReactNode;
@@ -27,16 +30,26 @@ export const SliderSwiper: FC<ISliderSwiperProps> = ({
       ref={swiperRef}
       initialSlide={0}
       className={'films-row ' + classes}
-      spaceBetween={25}
-      modules={[Navigation]}
+      modules={[Navigation, Grid]}
       navigation={true}
+      spaceBetween={15}
+      grid={{
+        rows: 2,
+      }}
       breakpoints={{
         320: {
+          slidesPerView: 2,
+          slidesPerGroup: 2,
+          // spaceBetween: 15,
+        },
+        540: {
           slidesPerView: 3,
+          slidesPerGroup: 3,
         },
         768: {
           slidesPerView: 4,
           slidesPerGroup: 4,
+          // spaceBetween: 25,
         },
         1000: {
           slidesPerView: sliderPerView,

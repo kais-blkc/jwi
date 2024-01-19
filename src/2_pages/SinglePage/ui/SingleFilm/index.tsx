@@ -10,8 +10,9 @@ import { CurGenresSingle } from '@/5_entities/Genres';
 import { VoteAverage } from '@/5_entities/VoteAverage';
 import { Characteristic } from '@/6_shared/ui/Сharacteristic';
 import { FilmImgs, FilmCast, FilmSimilar } from '@/3_widgets/FilmDetail';
-import { EImgSizes } from '@/6_shared/config';
-import { EMovieTypes } from '@/3_widgets/TvDetail/model/movieTypes';
+import { EImgSizes, EImgTypes } from '@/6_shared/config';
+import { EQueryTypes } from '@/3_widgets/TvDetail/model/movieTypes';
+import { IFilmImgsArgs } from '@/6_shared/model';
 
 type TSingleFilmParams = {
   id: string;
@@ -25,16 +26,27 @@ export const SingleFilm: FC = () => {
   const bg = getImgPath(film?.backdrop_path, EImgSizes.large);
 
   const curFilmArgs: IApiParams = {
-    movieType: EMovieTypes.movie,
+    movieType: EQueryTypes.movie,
     filmId: +params.id,
   };
+
+  const curFilmImgsInfo: IFilmImgsArgs[] = [
+    {
+      title: 'Фоны',
+      imgType: EImgTypes.backdrops,
+    },
+    {
+      title: 'Постеры',
+      imgType: EImgTypes.posters,
+    },
+  ];
 
   return (
     <>
       {isLoading && <Loading />}
       {film && (
         <div
-          className="film-single"
+          className='film-single'
           style={{
             backgroundImage: `url(${bg})`,
           }}
@@ -48,23 +60,26 @@ export const SingleFilm: FC = () => {
           >
             <CurGenresSingle curGenres={film.genres} />
             <Characteristic
-              title="Дата выхода"
+              title='Дата выхода'
               text={film.release_date || ''}
             />
             <Characteristic
-              title="Время"
+              title='Время'
               text={`${film.runtime} минут`}
             />
             <VoteAverage vote={film.vote_average} />
           </FilmHero>
 
-          <FilmImgs queryArgs={curFilmArgs} />
+          <FilmImgs
+            queryArgs={curFilmArgs}
+            imgListArgsArr={curFilmImgsInfo}
+          />
 
           <FilmCast queryArgs={curFilmArgs} />
 
           <FilmSimilar
             queryArgs={curFilmArgs}
-            curMovieType={EMovieTypes.movies}
+            curMovieType={EQueryTypes.movie}
           />
         </div>
       )}

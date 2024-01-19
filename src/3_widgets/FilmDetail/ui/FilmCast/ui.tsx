@@ -1,3 +1,4 @@
+import './styles.scss';
 import { FC } from 'react';
 import { getImgPath } from '@/6_shared/api/url';
 import { Error } from '@/6_shared/ui/Error';
@@ -22,12 +23,12 @@ export const FilmCast: FC<IFilmSingleCastProps> = ({ queryArgs }) => {
         <CardInfo
           id={index}
           poster={img}
-          linkTo=""
+          linkTo={`/person/${item.id}`}
         >
           <p>
             <b>{item.name}</b>
           </p>
-          <p>{item.known_for_department}</p>
+          <p>{item.character}</p>
         </CardInfo>
       </SwiperSlide>
     );
@@ -38,11 +39,11 @@ export const FilmCast: FC<IFilmSingleCastProps> = ({ queryArgs }) => {
       {isError && <Error />}
 
       <FadeIn>
-        <section className="film-single__cast slider-full-w">
-          <div className="container">
-            <h3 className="h3">Актерский состав</h3>
+        <section className='film-single__cast slider-full-w'>
+          <div className='container'>
+            <h3 className='h3'>Актерский состав</h3>
 
-            <div className="cast-list">
+            <div className='cast-list'>
               <SliderSwiper>{castList}</SliderSwiper>
             </div>
           </div>

@@ -9,10 +9,13 @@ const queryParams = {
 interface IResponseTv {
   page: number;
   results: ITv[];
+  total_pages: number;
 }
-// interface IResponseCast {
-//   cast: ICast[];
-// }
+
+interface IGetTvListParams {
+  TvListType: ETvListTypes;
+  page?: number;
+}
 
 export const tvApi = rtkApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -23,47 +26,22 @@ export const tvApi = rtkApi.injectEndpoints({
       }),
     }),
 
-    getTvList: builder.query<ITv[], ETvListTypes>({
-      query: (TvListType) => ({
+    getTvList: builder.query<IResponseTv, IGetTvListParams>({
+      query: ({ TvListType, page = 1 }) => ({
         url: `tv/${TvListType}`,
-        params: queryParams,
+        params: {
+          ...queryParams,
+          page,
+        },
       }),
-      transformResponse: (response: IResponseTv) => response.results,
+      // transformResponse: (response: IResponseTv) => response.results,
     }),
-
-    // getFilmListById: builder.query<IFilm[], number>({
-    //   query: (genreId) => ({
-    //     url: REQ_LIST.genreId,
-    //     params: {
-    //       language: 'ru',
-    //       include_adult: false,
-    //       include_video: true,
-    //       sort_by: 'popularity.desc',
-    //       with_genres: genreId,
-    //     },
-    //   }),
-    //   transformResponse: (response: IResponseFilm) => response.results,
-    // }),
-
-    // getSimilarFilmsById: builder.query<IFilm[], number>({
-    //   query: (filmId) => ({
-    //     url: `movie/${filmId}/similar`,
+    // getTvList: builder.query<ITv[], ETvListTypes>({
+    //   query: (TvListType) => ({
+    //     url: `tv/${TvListType}`,
     //     params: queryParams,
     //   }),
-    //   transformResponse: (response: IResponseFilm) => response.results,
-    // }),
-
-    // getCastFilmsById: builder.query<ICast[], number>({
-    //   query: (filmId) => ({
-    //     url: `movie/${filmId}/credits`,
-    //     params: queryParams,
-    //   }),
-    //   transformResponse: (response: IResponseCast) => response.cast,
-    // }),
-    // getImagesById: builder.query<IFilmImgList, number>({
-    //   query: (filmId) => ({
-    //     url: `movie/${filmId}/images`,
-    //   }),
+    //   transformResponse: (response: IResponseTv) => response.results,
     // }),
   }),
 });

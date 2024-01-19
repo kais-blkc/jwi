@@ -1,3 +1,5 @@
+import { EImgTypes } from '../config';
+
 export interface IFilm {
   id: number;
   title: string;
@@ -38,6 +40,7 @@ export interface IFilmImgList {
   backdrops: IFilmImg[];
   logos: IFilmImg[];
   posters: IFilmImg[];
+  profiles: IFilmImg[];
 }
 export interface IFilmGenre {
   id: number;
@@ -69,4 +72,22 @@ export interface ITv {
   episode_run_time: number[];
   number_of_episodes: number;
   number_of_seasons: number;
+}
+
+export interface IPerson {
+  id: number;
+  name: string;
+  birthday: string;
+  deathday: string;
+  homepage: string;
+  biography: string;
+  profile_path: string;
+  also_known_as: string;
+  place_of_birth: string;
+  known_for_department: string;
+}
+
+export interface IFilmImgsArgs {
+  title: string;
+  imgType: EImgTypes;
 }

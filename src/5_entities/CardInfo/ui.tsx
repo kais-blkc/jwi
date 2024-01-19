@@ -1,7 +1,8 @@
+import './styles.scss';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-interface IFilmsItemProps {
+interface ICardInfoProps {
   id: number;
   poster: string | undefined;
   linkTo: string;
@@ -9,7 +10,7 @@ interface IFilmsItemProps {
   index?: number;
 }
 
-export const CardInfo: FC<IFilmsItemProps> = ({
+export const CardInfo: FC<ICardInfoProps> = ({
   id,
   linkTo,
   poster,
@@ -20,17 +21,17 @@ export const CardInfo: FC<IFilmsItemProps> = ({
       to={linkTo}
       key={id}
       data-id={id}
-      className="films__item"
+      className='films__item cardinfo'
     >
-      <div className="films__item-img">
+      <div className='films__item-img'>
         <img
-          className="img-cover"
+          className='img-cover'
           src={poster}
-          alt=""
+          alt=''
         />
       </div>
 
-      <div className="films__item-info">{children}</div>
+      <div className='films__item-info'>{children}</div>
     </Link>
   );
 };

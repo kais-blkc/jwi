@@ -6,16 +6,18 @@ import { Error } from '@/6_shared/ui/Error';
 import { filmsApi } from '@/3_widgets/FilmDetail/api';
 
 export const Hero: FC = () => {
-  const { data, isLoading, isError } = filmsApi.useGetFilmListQuery(
-    REQ_LIST.popular
-  );
+  const { data, isLoading, isError } = filmsApi.useGetFilmListQuery({
+    queryStr: REQ_LIST.popular,
+  });
+
+  const films = data?.results;
 
   return (
     <>
       {isError && <Error />}
       {isLoading && <Loading />}
 
-      {data && <HeroList filmsList={data} />}
+      {films && <HeroList filmsList={films} />}
     </>
   );
 };

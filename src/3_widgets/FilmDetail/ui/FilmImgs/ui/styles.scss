@@ -1,0 +1,16 @@
+.film-single__imgs {
+  img {
+    border-radius: 10px;
+  }
+}
+
+.film-single__img-slider {
+  img {
+    transition: all 0.2s ease;
+    opacity: 1;
+
+    &:hover {
+      opacity: 0.4;
+    }
+  }
+}

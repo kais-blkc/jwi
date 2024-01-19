@@ -6,7 +6,7 @@ import {
 import { AuthorizationData } from '@/api-datas';
 import { BASE_URL } from '../config';
 import { ICast, IFilmImgList, ITv, IFilm } from '../model';
-import { EMovieTypes } from '@/3_widgets/TvDetail/model/movieTypes';
+import { EQueryTypes } from '@/3_widgets/TvDetail/model/movieTypes';
 
 export const fetchParams = {
   headers: {
@@ -28,7 +28,7 @@ interface IResponseFilm {
 }
 
 export interface IApiParams {
-  movieType: EMovieTypes;
+  movieType: EQueryTypes;
   filmId: number;
 }
 
@@ -45,7 +45,7 @@ const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 });
 export const rtkApi = createApi({
   reducerPath: 'rtkApi',
   baseQuery: baseQueryWithRetry,
-  tagTypes: ['Films', 'Tv'],
+  tagTypes: ['Films', 'Tv', 'Person', 'People'],
 
   endpoints: (builder) => ({
     getImgsById: builder.query<IFilmImgList, IApiParams>({

@@ -34,11 +34,17 @@ html {
   // --main-bg: var(--indigo-950);
 
   --main-bg: var(--slate-900);
+  // --main-bg-linear: linear-gradient(
+  //   45deg,
+  //   var(--slate-900),
+  //   var(--slate-800),
+  //   var(--slate-900)
+  // );
   --main-bg-linear: linear-gradient(
     45deg,
-    var(--slate-900),
-    var(--slate-800),
-    var(--slate-900)
+    rgb(14 21 35),
+    rgb(8 13 21),
+    rgb(31 49 91)
   );
 
   scroll-behavior: smooth;
@@ -61,7 +67,7 @@ h1 {
 }
 
 h2 {
-  margin-bottom: 25px;
+  // margin-bottom: 25px;
   font-size: 34px;
   font-weight: 600;
 
@@ -182,4 +188,17 @@ a {
   .swiper {
     overflow: visible;
   }
+}
+
+.pb-35-sections {
+  section {
+    padding-bottom: 35px;
+  }
+}
+
+.more-films {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }

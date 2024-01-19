@@ -29,9 +29,9 @@ export const CurGenresSingle: FC<ICurGenresProps> = ({
   });
 
   return (
-    <div className="film-item__genre">
+    <div className='film-item__genre'>
       {title ? <b>Жанр: </b> : ''}
-      <div className="film-item__genre-list">{genres}</div>
+      <div className='film-item__genre-list'>{genres}</div>
     </div>
   );
 };

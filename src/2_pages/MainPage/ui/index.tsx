@@ -7,7 +7,7 @@ import { Cartoons } from './Cartoons';
 
 export const MainPage: FC = () => {
   return (
-    <div className="page-main">
+    <div className='page-main'>
       <Hero />
       <Popular />
       <TvSeries />

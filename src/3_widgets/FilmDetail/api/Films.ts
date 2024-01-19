@@ -3,11 +3,23 @@ import { rtkApi } from '@/6_shared/api';
 
 const queryParams = {
   language: 'ru',
+  adult: false,
 };
 
 interface IResponseFilm {
   page: number;
   results: IFilm[];
+  total_pages: number;
+}
+
+interface IGetFilmListParams {
+  queryStr: string;
+  page?: number;
+}
+
+interface IGetFilmsDiscoverParams {
+  genreId: number;
+  page?: number;
 }
 
 export const filmsApi = rtkApi.injectEndpoints({
@@ -19,16 +31,18 @@ export const filmsApi = rtkApi.injectEndpoints({
       }),
     }),
 
-    getFilmList: builder.query<IFilm[], string>({
-      query: (queryStr) => ({
+    getFilmList: builder.query<IResponseFilm, IGetFilmListParams>({
+      query: ({ queryStr, page = 1 }) => ({
         url: queryStr,
-        params: queryParams,
+        params: {
+          ...queryParams,
+          page,
+        },
       }),
-      transformResponse: (response: IResponseFilm) => response.results,
     }),
 
-    getFilmsDiscover: builder.query<IFilm[], number>({
-      query: (genreId) => ({
+    getFilmsDiscover: builder.query<IResponseFilm, IGetFilmsDiscoverParams>({
+      query: ({ genreId, page = 1 }) => ({
         url: 'discover/movie',
         params: {
           language: 'ru',
@@ -36,9 +50,10 @@ export const filmsApi = rtkApi.injectEndpoints({
           include_video: true,
           sort_by: 'popularity.desc',
           with_genres: genreId,
+          page,
         },
       }),
-      transformResponse: (response: IResponseFilm) => response.results,
+      // transformResponse: (response: IResponseFilm) => response.results,
     }),
   }),
 });

@@ -41,16 +41,17 @@ export const HeroList: FC<IHeroListProps> = ({ filmsList }) => {
   });
 
   return (
-    <section className="films-hero not-py not-px">
-      <div className="films-hero-wrapper">
-        <div className="films-hero__bgs">{HeroFilmsBgItemList}</div>
+    <section className='films-hero not-py not-px'>
+      <div className='films-hero-wrapper'>
+        <div className='films-hero__bgs'>{HeroFilmsBgItemList}</div>
 
-        <div className="container">
+        <div className='container'>
           <Swiper
-            className="films-hero__list"
+            className='films-hero__list'
             spaceBetween={50}
             slidesPerView={1}
             onSlideChange={(swiper) => setCurSlideIndex(swiper.activeIndex)}
+            autoHeight={true}
             autoplay={{
               delay: 5000,
             }}

@@ -1,2 +1,2 @@
 export * from './url';
-export * from './imgSizes';
+export * from './img';

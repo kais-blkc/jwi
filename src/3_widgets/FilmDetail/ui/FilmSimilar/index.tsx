@@ -1,17 +1,16 @@
 import { FC } from 'react';
 import { SwiperSlide } from 'swiper/react';
 import { VoteAverageCount } from '@/6_shared/ui/VoteAverageCount';
-import { SliderSwiper } from '@/6_shared/ui/SliderSwiper';
 import { CardInfo } from '@/5_entities/CardInfo';
 import { CurGenres } from '@/5_entities/Genres';
 import { EImgSizes } from '@/6_shared/config';
 import { IApiParams, getImgPath, rtkApi } from '@/6_shared/api';
-import { EMovieTypes } from '@/3_widgets/TvDetail/model/movieTypes';
+import { EQueryTypes } from '@/3_widgets/TvDetail/model/movieTypes';
 import { FadeIn } from '@/6_shared/ui/Animate';
 
 interface IFilmSingleSimilarProps {
   queryArgs: IApiParams;
-  curMovieType: EMovieTypes;
+  curMovieType: EQueryTypes;
 }
 
 export const FilmSimilar: FC<IFilmSingleSimilarProps> = ({
@@ -37,7 +36,7 @@ export const FilmSimilar: FC<IFilmSingleSimilarProps> = ({
             title={false}
           />
           <VoteAverageCount vote={film.vote_average} />
-          <div className="cardinfo-title">{curTitle}</div>
+          <div className='cardinfo-title'>{curTitle}</div>
         </CardInfo>
       </SwiperSlide>
     );
@@ -48,10 +47,10 @@ export const FilmSimilar: FC<IFilmSingleSimilarProps> = ({
       {isLoading && 'Loading...'}
 
       <FadeIn>
-        <section className="film-single__imgs slider-full-w">
-          <div className="container">
-            <h3 className="h3">Похожие фильмы</h3>
-            <SliderSwiper>{similarRowList}</SliderSwiper>
+        <section className='film-single__imgs slider-full-w'>
+          <div className='container'>
+            <h3 className='h3'>Похожие фильмы</h3>
+            <div className='films-row not-slider'>{similarRowList}</div>
           </div>
         </section>
       </FadeIn>

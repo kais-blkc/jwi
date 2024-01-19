@@ -5,6 +5,11 @@
 }
 
 .swiper {
+  &.swiper-grid-column > .swiper-wrapper {
+    align-items: flex-end;
+    flex-direction: initial;
+  }
+
   .swiper-button-prev,
   .swiper-button-next {
     background: rgba(15, 23, 42, 0.65);

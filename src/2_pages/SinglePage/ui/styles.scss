@@ -1,4 +1,4 @@
-div.film-single {
+.film-single {
   min-height: 100vh;
   background: center / cover no-repeat;
   position: relative;
@@ -46,8 +46,11 @@ div.film-single {
     }
   }
 
+  h3 {
+    margin-bottom: 0;
+  }
   section {
-    padding-bottom: 35px;
+    padding-bottom: 50px;
   }
 }
 

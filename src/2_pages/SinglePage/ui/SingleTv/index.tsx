@@ -8,9 +8,10 @@ import { CurGenresSingle } from '@/5_entities/Genres';
 import { VoteAverage } from '@/5_entities/VoteAverage';
 import { Characteristic } from '@/6_shared/ui/Сharacteristic';
 import { FilmImgs, FilmCast, FilmSimilar } from '@/3_widgets/FilmDetail';
-import { EImgSizes } from '@/6_shared/config';
+import { EImgSizes, EImgTypes } from '@/6_shared/config';
 import { tvApi } from '@/3_widgets/TvDetail';
-import { EMovieTypes } from '@/3_widgets/TvDetail/model/movieTypes';
+import { EQueryTypes } from '@/3_widgets/TvDetail/model/movieTypes';
+import { IFilmImgsArgs } from '@/6_shared/model';
 
 type TSingleFilmParams = {
   id: string;
@@ -23,16 +24,26 @@ export const SingleTv: FC = () => {
   const { data: film, isLoading } = tvApi.useGetTvByIdQuery(params.id);
   const bg = getImgPath(film?.backdrop_path, EImgSizes.large);
   const curTvArgs: IApiParams = {
-    movieType: EMovieTypes.tv,
+    movieType: EQueryTypes.tv,
     filmId: +params.id,
   };
 
+  const curTvImgsInfo: IFilmImgsArgs[] = [
+    {
+      title: 'Фоны',
+      imgType: EImgTypes.backdrops,
+    },
+    {
+      title: 'Постеры',
+      imgType: EImgTypes.posters,
+    },
+  ];
   return (
     <>
       {isLoading && <Loading />}
       {film && (
         <div
-          className="film-single"
+          className='film-single'
           style={{
             backgroundImage: `url(${bg})`,
           }}
@@ -46,35 +57,38 @@ export const SingleTv: FC = () => {
           >
             <CurGenresSingle curGenres={film.genres} />
             <Characteristic
-              title="Дата первого эфира"
+              title='Дата первого эфира'
               text={film.first_air_date || ''}
             />
             <Characteristic
-              title="Дата последнего эфира"
+              title='Дата последнего эфира'
               text={film.last_air_date || ''}
             />
             <Characteristic
-              title="Длительность серии"
+              title='Длительность серии'
               text={`${film.episode_run_time} минут`}
             />
             <Characteristic
-              title="Всего сезонов"
+              title='Всего сезонов'
               text={`${film.number_of_seasons}`}
             />
             <Characteristic
-              title="Всего серий"
+              title='Всего серий'
               text={`${film.number_of_episodes}`}
             />
             <VoteAverage vote={film.vote_average} />
           </FilmHero>
 
-          <FilmImgs queryArgs={curTvArgs} />
+          <FilmImgs
+            queryArgs={curTvArgs}
+            imgListArgsArr={curTvImgsInfo}
+          />
 
           <FilmCast queryArgs={curTvArgs} />
 
           <FilmSimilar
             queryArgs={curTvArgs}
-            curMovieType={EMovieTypes.tv}
+            curMovieType={EQueryTypes.tv}
           />
         </div>
       )}
