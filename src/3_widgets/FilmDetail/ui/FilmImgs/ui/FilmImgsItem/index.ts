@@ -1,0 +1,1 @@
+export { FilmImgsItem } from './ui';

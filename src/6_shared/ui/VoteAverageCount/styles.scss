@@ -1,0 +1,11 @@
+.vote-average {
+  &.green {
+    color: var(--lime-500);
+  }
+  &.orange {
+    color: var(--amber-500);
+  }
+  &.red {
+    color: var(--red-500);
+  }
+}

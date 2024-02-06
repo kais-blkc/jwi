@@ -1,0 +1,1 @@
+export { VoteAverageCount } from './ui';

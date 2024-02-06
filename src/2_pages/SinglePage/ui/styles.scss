@@ -1,0 +1,59 @@
+.film-single {
+  min-height: 100vh;
+  background: center / cover no-repeat;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    background: rgba(black, 0.8);
+  }
+
+  .film-btns {
+    margin-top: 35px;
+
+    & > div {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  .film-single__img-slider {
+    .swiper-slide {
+      width: auto;
+      max-width: 100%;
+    }
+
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  .film-single__imgs {
+    h3 {
+      margin-top: 35px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  h3 {
+    margin-bottom: 0;
+  }
+  section {
+    padding-bottom: 50px;
+  }
+}
+
+.film-single__hero {
+  padding-top: 30px;
+}

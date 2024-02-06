@@ -1,0 +1,13 @@
+.cardinfo {
+  .genre-item {
+    @media (max-width: 767px) {
+      padding: 2px 3px !important;
+      font-size: 10px;
+      font-weight: 500;
+    }
+  }
+
+  &-title {
+    font-weight: 600;
+  }
+}

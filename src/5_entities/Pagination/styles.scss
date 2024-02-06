@@ -1,0 +1,23 @@
+.pagination {
+  margin: 25px 0;
+
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  &-item {
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+    &.active {
+      opacity: 0.5;
+    }
+    &-fl {
+      margin: 0 25px;
+    }
+  }
+}
