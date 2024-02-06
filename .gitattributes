@@ -1,2 +1,2 @@
-*.tsx linguist-language=react
-*.ts linguist-language=typescript
+src/* linguist-documentation=false
+src/* linguist-vendored
