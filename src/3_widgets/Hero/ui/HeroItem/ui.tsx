@@ -20,32 +20,32 @@ export const HeroItem: FC<IHeroFilmsItemProps> = ({ film }) => {
     <div
       key={film.id}
       data-id={film.id}
-      className="films-hero__item"
+      className='films-hero__item'
     >
       <Link
-        className="films-hero__item-img hover-opacity"
-        to={'/movies/' + film.id}
+        className='films-hero__item-img hover-opacity'
+        to={'/movie/' + film.id}
       >
         <img
-          className="img-cover"
+          className='img-cover'
           src={img}
-          alt=""
+          alt=''
         />
       </Link>
-      <div className="films-hero__item-info">
+      <div className='films-hero__item-info'>
         <div>
-          <div className="films-hero__item-title">{film.title}</div>
-          <div className="films-hero__item-desc">{film.overview}</div>
+          <div className='films-hero__item-title'>{film.title}</div>
+          <div className='films-hero__item-desc'>{film.overview}</div>
         </div>
 
-        <div className="films-hero__item-other">
+        <div className='films-hero__item-other'>
           <CurGenres genre_ids={film.genre_ids} />
 
           <p>
             <b>Дата выхода: </b>
             <span>{film.release_date}</span>
           </p>
-          <div className="films-hero__item-rate">
+          <div className='films-hero__item-rate'>
             <VoteAverage vote={film.vote_average} />
           </div>
         </div>
