@@ -1,3 +1,5 @@
+# Set language
 *.js linguist-language=TypeScript
-**/*.json linguist-language=jsonc
-* -text
+
+# Normalize line endings for all text files.
+* text=auto
