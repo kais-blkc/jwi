@@ -1,1 +1,2 @@
-You can show project online in deploy right side ->
+Gihub pages:
+[JWI preview](https://github.com/kais-blkc/jwi/deployments/github-pages)
